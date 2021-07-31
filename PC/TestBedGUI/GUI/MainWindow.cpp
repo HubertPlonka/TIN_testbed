@@ -1,4 +1,5 @@
 #include "MainWindow.hpp"
+#include "wx/notebook.h"
 
 
 namespace tb
@@ -22,18 +23,35 @@ MainWindow::MainWindow() : wxFrame(
 	wxBoxSizer* buttonBox = new wxBoxSizer(wxHORIZONTAL);
 	wxBoxSizer* chipViewBox = new wxBoxSizer(wxVERTICAL);
 
+	wxMenuBar* menu = new wxMenuBar();
+	wxMenu* fileMenu = new wxMenu();
+	fileMenu->Append(ID_REFRESH_COM_MENU, "&Refresh COM ports");
+	fileMenu->AppendSeparator();
+	fileMenu->Append(wxID_EXIT, "&Quit");
+	menu->Append(fileMenu, "File");
+
+	Bind(wxEVT_MENU, &MainWindow::OnQuit, this, wxID_EXIT);
+
+	wxStaticText* COMLabel = new wxStaticText(background, wxID_ANY, "COM selection");
+	wxChoice* COMsel = new wxChoice(background, ID_COM_PORT_SEL);
+
+	wxStaticText* tcLabel = new wxStaticText(background, wxID_ANY, "Test cases");
 	wxListBox* tcList = new wxListBox(background, ID_TC_LIST);
 	tcList->Append("peniz1");
+	tcList->Append("peniz2");
+	tcList->Append("peniz3");
+	tcList->Append("peniz3");
+	tcList->Append("RUN ALL");
+
 	wxButton* selectButton = new wxButton(background, wxID_ANY, "Select");
 	beginTestB = new wxButton(background, wxID_ANY, "Test!");
+		
+	wxNotebook* terminalWindow = new wxNotebook(background, ID_TERMINAL);
+	wxTextCtrl* testText = new wxTextCtrl(terminalWindow, wxID_ANY, "Tu moga sie wyswietlac wykonywane polecenia");
+	wxTextCtrl* test2Text = new wxTextCtrl(terminalWindow, wxID_ANY, "Tu mo¿e byæ jakiœ uproszczony wynik testu");
+	terminalWindow->AddPage(testText, "Terminal");
+	terminalWindow->AddPage(test2Text, "Test results");
 
-
-	//wxPanel* p1 = new wxPanel(background, wxID_ANY);
-	//p1->SetBackgroundColour(wxColor(0xff0000));
-	//wxPanel* p2 = new wxPanel(background, wxID_ANY);
-	//p2->SetBackgroundColour(wxColor(0x00ff00));
-	wxPanel* p3 = new wxPanel(background, wxID_ANY);
-	p3->SetBackgroundColour(wxColor(0x0000ff));
 	wxPanel* p4 = new wxPanel(background, wxID_ANY);
 	p4->SetBackgroundColour(wxColor(0x00000a));
 
@@ -41,6 +59,10 @@ MainWindow::MainWindow() : wxFrame(
 	buttonBox->Add(selectButton, 1, wxALL, BorderWidth);
 	buttonBox->Add(beginTestB, 1, wxALL, BorderWidth);
 
+
+	selectionBox->Add(COMLabel, 0, wxALIGN_CENTER_HORIZONTAL);
+	selectionBox->Add(COMsel, 0, wxALIGN_CENTER_HORIZONTAL | wxEXPAND);
+	selectionBox->Add(tcLabel, 0, wxALIGN_CENTER_HORIZONTAL);
 	selectionBox->Add(tcList, 1, wxEXPAND | wxALL, BorderWidth);
 	selectionBox->Add(buttonBox, 0,  wxALL | wxALIGN_CENTER , BorderWidth);
 	chipViewBox->Add(p4, 1, wxEXPAND | wxALL, BorderWidth);
@@ -48,17 +70,24 @@ MainWindow::MainWindow() : wxFrame(
 	UIBox->Add(selectionBox, 1, wxEXPAND | wxALL, BorderWidth);
 	UIBox->Add(chipViewBox, 2, wxEXPAND | wxALL, BorderWidth);
 
-	terminalBox->Add(p3, 1, wxEXPAND | wxALL, BorderWidth);
+	terminalBox->Add(terminalWindow, 1, wxEXPAND | wxALL, BorderWidth);
 
 	bgBox->Add(UIBox, 3, wxEXPAND | (wxUP | wxRIGHT | wxLEFT), BorderWidth);
 	bgBox->Add(terminalBox, 2, wxEXPAND | wxDOWN | wxRIGHT | wxLEFT, BorderWidth);
 
 	background->SetSizer(bgBox);
 
+	SetMenuBar(menu);
 	Centre();
 	SetMinClientSize(wxSize(400, 280));
 	SetMaxClientSize(wxSize(841, 481));
 
+}
+
+void MainWindow::OnQuit(wxCommandEvent& evt)
+{
+	WXUNUSED(evt);
+	Close(true);
 }
 
 } // namespace tb

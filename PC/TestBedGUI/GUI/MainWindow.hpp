@@ -9,7 +9,10 @@ enum WidgetID : int
 {
 	unused = 1000,
 	ID_BEGIN_TEST_BUTTON,
-	ID_TC_LIST
+	ID_TC_LIST,
+	ID_TERMINAL,
+	ID_COM_PORT_SEL,
+	ID_REFRESH_COM_MENU
 };
 
 class MainWindow : public wxFrame
@@ -19,6 +22,8 @@ public:
 
 private:
 	wxButton* beginTestB = nullptr;
+
+	void OnQuit(wxCommandEvent& evt);
 
 };
 
