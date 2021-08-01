@@ -33,3 +33,7 @@ Jeżeli nie chcesz pobierać tych ~160MB to można zawsze pobrać źródła \
 wxWidgets i skompilować samodzielnie (trwa to zależnie od \
 komputera ~10 - 20 min), następnie podać w VS2019 ścieżkę do katalogu  ```vc_lib``` (dołączenie statycznej biblioteki)
 ```include``` oraz ```include\msvc```
+
+## Wygląd GUI
+
+![Obrazek](Schematics/GUI.png?raw=true "Obrazek")
