@@ -1,5 +1,5 @@
 #include "MainWindow.hpp"
-#include "wx/notebook.h"
+#include <wx/richtext/richtextctrl.h>
 
 
 namespace tb
@@ -26,6 +26,7 @@ MainWindow::MainWindow() : wxFrame(
 	wxMenuBar* menu = new wxMenuBar();
 	wxMenu* fileMenu = new wxMenu();
 	fileMenu->Append(ID_REFRESH_COM_MENU, "&Refresh COM ports");
+	fileMenu->Append(ID_REFRESH_TC_MENU, "Refresh test cases");
 	fileMenu->AppendSeparator();
 	fileMenu->Append(wxID_EXIT, "&Quit");
 	menu->Append(fileMenu, "File");
@@ -46,31 +47,38 @@ MainWindow::MainWindow() : wxFrame(
 	wxButton* selectButton = new wxButton(background, wxID_ANY, "Select");
 	beginTestB = new wxButton(background, wxID_ANY, "Test!");
 		
-	wxNotebook* terminalWindow = new wxNotebook(background, ID_TERMINAL);
-	wxTextCtrl* testText = new wxTextCtrl(terminalWindow, wxID_ANY, "Tu moga sie wyswietlac wykonywane polecenia");
+	/*wxNotebook* terminalWindow = new wxNotebook(background, ID_TERMINAL);
 	wxTextCtrl* test2Text = new wxTextCtrl(terminalWindow, wxID_ANY, "Tu mo¿e byæ jakiœ uproszczony wynik testu");
+	test2Text->SetWindowStyleFlag(wxTE_READONLY | wxTE_CENTRE);
 	terminalWindow->AddPage(testText, "Terminal");
-	terminalWindow->AddPage(test2Text, "Test results");
+	terminalWindow->AddPage(test2Text, "Test results");*/
+	wxRichTextCtrl* terminalWindow = new wxRichTextCtrl(
+		background, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxRE_READONLY | wxRE_MULTILINE);
+	terminalWindow->SetBackgroundColour(wxColour(*wxBLACK));
+	terminalWindow->SetDefaultStyle(wxTextAttr(*wxGREEN));
+	terminalWindow->WriteText("[PASSED] ");
+	terminalWindow->SetDefaultStyle(wxTextAttr(*wxLIGHT_GREY));
+	terminalWindow->WriteText("Test output works!");
+	wxStaticText* terminalLabel = new wxStaticText(background, wxID_ANY, "Test output");
 
 	wxPanel* p4 = new wxPanel(background, wxID_ANY);
 	p4->SetBackgroundColour(wxColor(0x00000a));
 
-
 	buttonBox->Add(selectButton, 1, wxALL, BorderWidth);
 	buttonBox->Add(beginTestB, 1, wxALL, BorderWidth);
 
-
 	selectionBox->Add(COMLabel, 0, wxALIGN_CENTER_HORIZONTAL);
-	selectionBox->Add(COMsel, 0, wxALIGN_CENTER_HORIZONTAL | wxEXPAND);
+	selectionBox->Add(COMsel, 0, wxALIGN_CENTER_HORIZONTAL | wxEXPAND | wxLEFT | wxRIGHT, 14);
 	selectionBox->Add(tcLabel, 0, wxALIGN_CENTER_HORIZONTAL);
 	selectionBox->Add(tcList, 1, wxEXPAND | wxALL, BorderWidth);
 	selectionBox->Add(buttonBox, 0,  wxALL | wxALIGN_CENTER , BorderWidth);
+	selectionBox->Add(terminalLabel, 0,  wxALL | wxALIGN_LEFT , BorderWidth - 5);
 	chipViewBox->Add(p4, 1, wxEXPAND | wxALL, BorderWidth);
 
 	UIBox->Add(selectionBox, 1, wxEXPAND | wxALL, BorderWidth);
-	UIBox->Add(chipViewBox, 2, wxEXPAND | wxALL, BorderWidth);
+	UIBox->Add(chipViewBox, 2, wxEXPAND | (wxALL & ~wxBOTTOM), BorderWidth);
 
-	terminalBox->Add(terminalWindow, 1, wxEXPAND | wxALL, BorderWidth);
+	terminalBox->Add(terminalWindow, 1, wxEXPAND | (wxALL & ~wxTOP), BorderWidth);
 
 	bgBox->Add(UIBox, 3, wxEXPAND | (wxUP | wxRIGHT | wxLEFT), BorderWidth);
 	bgBox->Add(terminalBox, 2, wxEXPAND | wxDOWN | wxRIGHT | wxLEFT, BorderWidth);

@@ -12,7 +12,8 @@ enum WidgetID : int
 	ID_TC_LIST,
 	ID_TERMINAL,
 	ID_COM_PORT_SEL,
-	ID_REFRESH_COM_MENU
+	ID_REFRESH_COM_MENU,
+	ID_REFRESH_TC_MENU
 };
 
 class MainWindow : public wxFrame

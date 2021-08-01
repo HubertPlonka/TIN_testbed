@@ -26,3 +26,10 @@ D:\mujFolderek\he\he
 ```
 
 Proste no nie ? xD
+
+Folder można pobrać tu -> [wxWidgets](https://drive.google.com/file/d/19QC6fGoTbvylOnT7RSkwvBJ8GiaywVZF/view?usp=sharing)
+
+Jeżeli nie chcesz pobierać tych ~160MB to można zawsze pobrać źródła \
+wxWidgets i skompilować samodzielnie (trwa to zależnie od \
+komputera ~10 - 20 min), następnie podać w VS2019 ścieżkę do katalogu  ```vc_lib``` (dołączenie statycznej biblioteki)
+```include``` oraz ```include\msvc```
