@@ -49,10 +49,10 @@ MainWindow::MainWindow() : wxFrame(
 
 	wxStaticText* tcLabel = new wxStaticText(background, wxID_ANY, "Test cases");
 	tcList = new wxListBox(background, ID_TC_LIST);
-	tcList->Append("peniz1");
-	tcList->Append("peniz2");
-	tcList->Append("peniz3");
-	tcList->Append("peniz3");
+	tcList->Append("test1");
+	tcList->Append("test2");
+	tcList->Append("test3");
+	tcList->Append("test3");
 	tcList->Append("RUN ALL");
 
 	selectButton = new wxButton(background, wxID_ANY, "Select");
