@@ -1,6 +1,7 @@
 #pragma once
 
 #include <wx/wx.h>
+#include <wx/richtext/richtextctrl.h>
 
 namespace tb
 {
@@ -23,6 +24,10 @@ public:
 
 private:
 	wxButton* beginTestB = nullptr;
+	wxRichTextCtrl* terminalWindow = nullptr;
+	wxChoice* COMsel = nullptr;
+	wxListBox* tcList = nullptr;
+	wxButton* selectButton = nullptr;
 
 	void OnQuit(wxCommandEvent& evt);
 

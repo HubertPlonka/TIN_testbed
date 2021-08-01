@@ -149,10 +149,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="GUI\GUIManager.cpp" />
     <ClCompile Include="GUI\Launcher.cpp" />
     <ClCompile Include="GUI\MainWindow.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="GUI\GUIManager.hpp" />
     <ClInclude Include="GUI\Launcher.hpp" />
     <ClInclude Include="GUI\MainWindow.hpp" />
   </ItemGroup>

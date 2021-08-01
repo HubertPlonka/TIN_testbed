@@ -1,5 +1,4 @@
 #include "MainWindow.hpp"
-#include <wx/richtext/richtextctrl.h>
 
 
 namespace tb
@@ -15,13 +14,17 @@ MainWindow::MainWindow() : wxFrame(
 	constexpr int numOfRows		= 3;
 	constexpr int numOfCols		= 2;
 
-	wxPanel* background = new wxPanel(this, wxID_ANY);
-	wxBoxSizer* bgBox = new wxBoxSizer(wxVERTICAL);
-	wxBoxSizer* terminalBox = new wxBoxSizer(wxHORIZONTAL);
-	wxBoxSizer* UIBox = new wxBoxSizer(wxHORIZONTAL);
-	wxBoxSizer* selectionBox = new wxBoxSizer(wxVERTICAL);
-	wxBoxSizer* buttonBox = new wxBoxSizer(wxHORIZONTAL);
-	wxBoxSizer* chipViewBox = new wxBoxSizer(wxVERTICAL);
+	wxPanel* background			= new wxPanel(this, wxID_ANY);
+	wxBoxSizer* bgBox			= new wxBoxSizer(wxVERTICAL);
+	wxBoxSizer* terminalBox		= new wxBoxSizer(wxHORIZONTAL);
+	wxBoxSizer* UIBox			= new wxBoxSizer(wxHORIZONTAL);
+	wxBoxSizer* selectionBox	= new wxBoxSizer(wxVERTICAL);
+	wxBoxSizer* buttonBox		= new wxBoxSizer(wxHORIZONTAL);
+	wxBoxSizer* chipViewBox		= new wxBoxSizer(wxVERTICAL);
+
+	////////////////////////////////////////////////////////////////
+	// Menu on top ribbon
+	////////////////////////////////////////////////////////////////
 
 	wxMenuBar* menu = new wxMenuBar();
 	wxMenu* fileMenu = new wxMenu();
@@ -33,26 +36,33 @@ MainWindow::MainWindow() : wxFrame(
 
 	Bind(wxEVT_MENU, &MainWindow::OnQuit, this, wxID_EXIT);
 
+	////////////////////////////////////////////////////////////////
+	// COM port selection field
+	////////////////////////////////////////////////////////////////
+
 	wxStaticText* COMLabel = new wxStaticText(background, wxID_ANY, "COM selection");
-	wxChoice* COMsel = new wxChoice(background, ID_COM_PORT_SEL);
+	COMsel = new wxChoice(background, ID_COM_PORT_SEL);
+
+	////////////////////////////////////////////////////////////////
+	// Test case selection area
+	////////////////////////////////////////////////////////////////
 
 	wxStaticText* tcLabel = new wxStaticText(background, wxID_ANY, "Test cases");
-	wxListBox* tcList = new wxListBox(background, ID_TC_LIST);
+	tcList = new wxListBox(background, ID_TC_LIST);
 	tcList->Append("peniz1");
 	tcList->Append("peniz2");
 	tcList->Append("peniz3");
 	tcList->Append("peniz3");
 	tcList->Append("RUN ALL");
 
-	wxButton* selectButton = new wxButton(background, wxID_ANY, "Select");
+	selectButton = new wxButton(background, wxID_ANY, "Select");
 	beginTestB = new wxButton(background, wxID_ANY, "Test!");
-		
-	/*wxNotebook* terminalWindow = new wxNotebook(background, ID_TERMINAL);
-	wxTextCtrl* test2Text = new wxTextCtrl(terminalWindow, wxID_ANY, "Tu mo¿e byæ jakiœ uproszczony wynik testu");
-	test2Text->SetWindowStyleFlag(wxTE_READONLY | wxTE_CENTRE);
-	terminalWindow->AddPage(testText, "Terminal");
-	terminalWindow->AddPage(test2Text, "Test results");*/
-	wxRichTextCtrl* terminalWindow = new wxRichTextCtrl(
+
+	////////////////////////////////////////////////////////////////
+	// "Terminal" window (displays info about tests)
+	////////////////////////////////////////////////////////////////
+
+	terminalWindow = new wxRichTextCtrl(
 		background, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxRE_READONLY | wxRE_MULTILINE);
 	terminalWindow->SetBackgroundColour(wxColour(*wxBLACK));
 	terminalWindow->SetDefaultStyle(wxTextAttr(*wxGREEN));
@@ -61,8 +71,17 @@ MainWindow::MainWindow() : wxFrame(
 	terminalWindow->WriteText("Test output works!");
 	wxStaticText* terminalLabel = new wxStaticText(background, wxID_ANY, "Test output");
 
+	////////////////////////////////////////////////////////////////
+	// Unused - this might be chip visualisation in the future 
+	// also this may be replaced by bigger terminal window
+	////////////////////////////////////////////////////////////////
+
 	wxPanel* p4 = new wxPanel(background, wxID_ANY);
 	p4->SetBackgroundColour(wxColor(0x00000a));
+
+	////////////////////////////////////////////////////////////////
+	// Layout management (plz don't touch :))
+	////////////////////////////////////////////////////////////////
 
 	buttonBox->Add(selectButton, 1, wxALL, BorderWidth);
 	buttonBox->Add(beginTestB, 1, wxALL, BorderWidth);
@@ -89,7 +108,6 @@ MainWindow::MainWindow() : wxFrame(
 	Centre();
 	SetMinClientSize(wxSize(400, 280));
 	SetMaxClientSize(wxSize(841, 481));
-
 }
 
 void MainWindow::OnQuit(wxCommandEvent& evt)
