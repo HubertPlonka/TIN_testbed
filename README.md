@@ -36,4 +36,4 @@ komputera ~10 - 20 min), następnie podać w VS2019 ścieżkę do katalogu  ```v
 
 ## Wygląd GUI
 
-![Obrazek](./Schematics/GUI.png?raw=true "Obrazek")
+![Obrazek](https://github.com/Commentsareuseless/TIN_testbed/blob/main/Schematics/GUI.PNG)
