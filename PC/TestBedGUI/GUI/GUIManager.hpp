@@ -48,8 +48,9 @@ public:
 	std::string GetSelectedCOM();
 
 	void AddTestCase(
-			std::string& name,
-			std::function<void()>& tcFunc);
+			const std::string& name,		/* Name displayed on tc list */
+			std::function<void()>& tcFunc,	/* Function to call when Test! button is pressed */
+			const std::string& hex2PrgAVR);	/* Name of .hex file (path is fixed to ..\AVRtc\) */
 	// TODO: add menu option for this xD
 	void SaveTestLogToFile(const std::string& fileName);
 	void ClearTestCasesTable();

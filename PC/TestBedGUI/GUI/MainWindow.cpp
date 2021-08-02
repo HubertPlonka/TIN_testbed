@@ -28,6 +28,7 @@ MainWindow::MainWindow() : wxFrame(
 
 	wxMenuBar* menu = new wxMenuBar();
 	wxMenu* fileMenu = new wxMenu();
+	fileMenu->Append(ID_PROGRAM_AVR_MENU, "Program AVR");
 	fileMenu->Append(ID_REFRESH_COM_MENU, "&Refresh COM ports");
 	fileMenu->Append(ID_REFRESH_TC_MENU, "Refresh test cases");
 	fileMenu->AppendSeparator();
