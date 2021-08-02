@@ -2,6 +2,7 @@
 
 #include <string>
 #include <functional>
+#include <bitset>
 
 namespace tb
 {
@@ -19,8 +20,9 @@ enum class LogLevel : unsigned
 {
 	TC_RESULT_ONLY,		/* Print only wheather test passed or failed */
 	INFO,				/* Print [INFO] messages, general info, may be in relase version */
-	ERROR,				/* Print [ERROR] messages, for more precise info about test fail reason */
-	DEBUG				/* Print [DEBUG] messages, for debugging, turn off for relase */
+	ERR,				/* Print [ERROR] messages, for more precise info about test fail reason */
+	DEBUG,				/* Print [DEBUG] messages, for debugging, turn off for relase */
+	NUM_OF_OPTIONS
 };
 
 enum class TestResult : unsigned
@@ -33,7 +35,7 @@ class GUIManager
 {
 public:
 	//////////////////////////////////////////////////////
-	// Print to GUI "console" window
+	// Print to GUI's "console" window
 	//////////////////////////////////////////////////////
 	void SetLoggingLevel(const LogLevel llvl);
 	void PrintConsoleInfo(const std::string& message);
@@ -54,6 +56,10 @@ public:
 	// TODO: add menu option for this xD
 	void SaveTestLogToFile(const std::string& fileName);
 	void ClearTestCasesTable();
+
+private:
+	// Is this even necessary? lul
+	std::bitset<(size_t)LogLevel::NUM_OF_OPTIONS> logLvl = 0xf;
 };
 
 } //namespace tb

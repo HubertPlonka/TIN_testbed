@@ -23,7 +23,15 @@ class MainWindow : public wxFrame
 public:
 	MainWindow();
 
+	static MainWindow* GetInstance() { return instance; }
+
+	wxRichTextCtrl* GetTerminal() { return terminalWindow; }
+	wxChoice* GetCOMList() { return COMsel; }
+
+
 private:
+	static MainWindow* instance;
+
 	wxButton* beginTestB = nullptr;
 	wxRichTextCtrl* terminalWindow = nullptr;
 	wxChoice* COMsel = nullptr;

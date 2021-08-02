@@ -12,7 +12,7 @@ public:
 	virtual bool OnInit() override;
 
 private:
-	MainWindow* mainFrame = nullptr;
+	MainWindow* mainFrame;
 };
 
 } // namespace tb

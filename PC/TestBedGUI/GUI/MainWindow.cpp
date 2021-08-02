@@ -5,9 +5,20 @@ namespace tb
 {
 	constexpr char _WINDOW_TITLE[] = "AVR TestBed v0.0.1"; 
 
+	MainWindow* MainWindow::instance = nullptr;
+
 MainWindow::MainWindow() : wxFrame(
 	nullptr, wxID_ANY, _WINDOW_TITLE, wxDefaultPosition, wxSize(840, 480))
 {
+	if (instance == nullptr)
+	{
+		instance = this;
+	}
+	else
+	{
+		return;
+	}
+
 	constexpr int HSpacing		= 2;
 	constexpr int VSpacing		= 2;
 	constexpr int BorderWidth	= 5;
@@ -36,6 +47,7 @@ MainWindow::MainWindow() : wxFrame(
 	menu->Append(fileMenu, "File");
 
 	Bind(wxEVT_MENU, &MainWindow::OnQuit, this, wxID_EXIT);
+	//Bind();
 
 	////////////////////////////////////////////////////////////////
 	// COM port selection field
@@ -66,10 +78,11 @@ MainWindow::MainWindow() : wxFrame(
 	terminalWindow = new wxRichTextCtrl(
 		background, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxRE_READONLY | wxRE_MULTILINE);
 	terminalWindow->SetBackgroundColour(wxColour(*wxBLACK));
-	terminalWindow->SetDefaultStyle(wxTextAttr(*wxGREEN));
-	terminalWindow->WriteText("[PASSED] ");
 	terminalWindow->SetDefaultStyle(wxTextAttr(*wxLIGHT_GREY));
-	terminalWindow->WriteText("Test output works!");
+	terminalWindow->WriteText("======= ");
+	terminalWindow->WriteText(_WINDOW_TITLE);
+	terminalWindow->WriteText(" =======");
+	terminalWindow->Newline();
 	wxStaticText* terminalLabel = new wxStaticText(background, wxID_ANY, "Test output");
 
 	////////////////////////////////////////////////////////////////
