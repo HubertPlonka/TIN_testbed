@@ -149,14 +149,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="GUI\GUIManager.cpp" />
-    <ClCompile Include="GUI\Launcher.cpp" />
-    <ClCompile Include="GUI\MainWindow.cpp" />
+    <ClInclude Include="src\GUIManager.hpp" />
+    <ClInclude Include="src\Launcher.hpp" />
+    <ClInclude Include="src\MainWindow.hpp" />
+    <ClInclude Include="src\TestCase.hpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="GUI\GUIManager.hpp" />
-    <ClInclude Include="GUI\Launcher.hpp" />
-    <ClInclude Include="GUI\MainWindow.hpp" />
+    <ClCompile Include="src\GUIManager.cpp" />
+    <ClCompile Include="src\Launcher.cpp" />
+    <ClCompile Include="src\MainWindow.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

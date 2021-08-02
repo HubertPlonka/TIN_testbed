@@ -1,5 +1,7 @@
 #pragma once
 
+#include "TestCase.hpp"
+
 #include <string>
 #include <functional>
 #include <bitset>
@@ -49,10 +51,7 @@ public:
 	void AddCOMPort(std::string& name, unsigned ID);
 	std::string GetSelectedCOM();
 
-	void AddTestCase(
-			const std::string& name,		/* Name displayed on tc list */
-			std::function<void()>& tcFunc,	/* Function to call when Test! button is pressed */
-			const std::string& hex2PrgAVR);	/* Name of .hex file (path is fixed to ..\AVRtc\) */
+	void AddTestCase(TestCase& tc);
 	// TODO: add menu option for this xD
 	void SaveTestLogToFile(const std::string& fileName);
 	void ClearTestCasesTable();
