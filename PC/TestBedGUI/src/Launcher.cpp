@@ -12,12 +12,11 @@ bool Launcher::OnInit()
 	mainFrame = new MainWindow();
 	mainFrame->Show();
 
-	GUIManager* man = new GUIManager();
-	man->PrintConsoleInfo("Konsola dzia³a");
-	man->PrintConsoleDebug("Debug dzia³a");
-	man->PrintConsoleError("Error dzia³a");
-	man->PrintTestState("Test state dziala", TestResult::PASS);
-	delete man;
+	managerInst = std::make_shared<GUIManager>(GUIManager());
+	managerInst->PrintConsoleInfo("Konsola dzia³a");
+	managerInst->PrintConsoleDebug("Debug dzia³a");
+	managerInst->PrintConsoleError("Error dzia³a");
+	managerInst->PrintTestState("Test state dziala", TestResult::PASS);
 
 	return true;
 }

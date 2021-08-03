@@ -152,12 +152,14 @@
     <ClInclude Include="src\GUIManager.hpp" />
     <ClInclude Include="src\Launcher.hpp" />
     <ClInclude Include="src\MainWindow.hpp" />
+    <ClInclude Include="src\TCManager.hpp" />
     <ClInclude Include="src\TestCase.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\GUIManager.cpp" />
     <ClCompile Include="src\Launcher.cpp" />
     <ClCompile Include="src\MainWindow.cpp" />
+    <ClCompile Include="src\TCManager.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

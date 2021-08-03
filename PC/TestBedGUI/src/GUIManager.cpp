@@ -9,6 +9,8 @@
 
 namespace tb
 {
+    std::bitset<(size_t)LogLevel::NUM_OF_OPTIONS> GUIManager::logLvl = 0xf;
+
     // #doinWhatICanNotToIncludeWxWidgetsInHpp
     static void PrintConsole(
         const std::string& message,

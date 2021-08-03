@@ -39,11 +39,11 @@ public:
 	//////////////////////////////////////////////////////
 	// Print to GUI's "console" window
 	//////////////////////////////////////////////////////
-	void SetLoggingLevel(const LogLevel llvl);
-	void PrintConsoleInfo(const std::string& message);
-	void PrintConsoleError(const std::string& message);
-	void PrintConsoleDebug(const std::string& message);
-	void PrintTestState(
+	static void SetLoggingLevel(const LogLevel llvl);
+	static void PrintConsoleInfo(const std::string& message);
+	static void PrintConsoleError(const std::string& message);
+	static void PrintConsoleDebug(const std::string& message);
+	static void PrintTestState(
 		const std::string& message, 
 		const TestResult result);
 	//////////////////////////////////////////////////////
@@ -58,7 +58,7 @@ public:
 
 private:
 	// Is this even necessary? lul
-	std::bitset<(size_t)LogLevel::NUM_OF_OPTIONS> logLvl = 0xf;
+	static std::bitset<(size_t)LogLevel::NUM_OF_OPTIONS> logLvl;
 };
 
 } //namespace tb

@@ -1,7 +1,9 @@
 #pragma once
 
 #include <wx/wx.h>
+#include <memory>
 #include "MainWindow.hpp"
+#include "GUIManager.hpp"
 
 namespace tb
 {
@@ -13,6 +15,7 @@ public:
 
 private:
 	MainWindow* mainFrame;
+	std::shared_ptr<GUIManager> managerInst;
 };
 
 } // namespace tb

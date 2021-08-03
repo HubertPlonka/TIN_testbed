@@ -1,9 +1,9 @@
 #include "MainWindow.hpp"
-
+#include "GUIManager.hpp"
 
 namespace tb
 {
-	constexpr char _WINDOW_TITLE[] = "AVR TestBed v0.0.1"; 
+	constexpr char _WINDOW_TITLE[] = "AVR TestBed v" AVR_TB_VERSION; 
 
 	MainWindow* MainWindow::instance = nullptr;
 
@@ -68,8 +68,8 @@ MainWindow::MainWindow() : wxFrame(
 	tcList->Append("test3");
 	tcList->Append("RUN ALL");
 
-	selectButton = new wxButton(background, wxID_ANY, "Select");
-	beginTestB = new wxButton(background, wxID_ANY, "Test!");
+	selectButton = new wxButton(background, ID_SELECT_BUTTON, "Select");
+	beginTestB = new wxButton(background, ID_BEGIN_TEST_BUTTON, "Test!");
 
 	////////////////////////////////////////////////////////////////
 	// "Terminal" window (displays info about tests)
@@ -122,6 +122,40 @@ MainWindow::MainWindow() : wxFrame(
 	Centre();
 	SetMinClientSize(wxSize(400, 280));
 	SetMaxClientSize(wxSize(841, 481));
+
+	tcmInst = std::make_shared<TCManager>(TCManager());
+	tcmInst->TestConsoleOut();
+
+	Bind(wxEVT_BUTTON, &MainWindow::OnTCSelected, this, ID_SELECT_BUTTON);
+}
+
+void MainWindow::OnRefreshCOMtable(wxCommandEvent& evt)
+{
+}
+
+void MainWindow::OnRefreshTCtable(wxCommandEvent& evt)
+{
+}
+
+void MainWindow::OnTestBegin(wxCommandEvent& evt)
+{
+}
+
+void MainWindow::OnTCSelected(wxCommandEvent& evt)
+{
+	std::string tcName{};
+	tcName = tcList->GetStringSelection();
+
+	if (tcName.empty())
+	{
+		GUIManager manager;
+		manager.PrintConsoleInfo("Select test case on list before clicking \"Select\"");
+		evt.Skip();
+		return;
+	}
+
+	tcmInst->RunTestCase(tcName);
+	evt.Skip();
 }
 
 void MainWindow::OnQuit(wxCommandEvent& evt)
