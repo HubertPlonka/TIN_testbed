@@ -1,5 +1,6 @@
 #include "MainWindow.hpp"
 #include "GUIManager.hpp"
+#include "SerialCom.hpp"
 
 namespace tb
 {
@@ -127,18 +128,27 @@ MainWindow::MainWindow() : wxFrame(
 	tcmInst->TestConsoleOut();
 
 	Bind(wxEVT_BUTTON, &MainWindow::OnTCSelected, this, ID_SELECT_BUTTON);
+	Bind(wxEVT_BUTTON, &MainWindow::OnTestBegin, this, ID_BEGIN_TEST_BUTTON);
+	Bind(wxEVT_MENU, &MainWindow::OnRefreshCOMtable, this, ID_REFRESH_COM_MENU);
 }
 
 void MainWindow::OnRefreshCOMtable(wxCommandEvent& evt)
 {
+	SerialCom::RefreshAvailableCOMPorts();
+	GUIManager::PrintConsoleDebug("Refreshowanie dziala :)");
+	evt.Skip();
 }
 
 void MainWindow::OnRefreshTCtable(wxCommandEvent& evt)
 {
+	// Here should be invoked func which parses txt and 
+	// creates new txts
 }
 
 void MainWindow::OnTestBegin(wxCommandEvent& evt)
 {
+	tcmInst->RunTestCase((const char*)tcList->GetStringSelection());
+	evt.Skip();
 }
 
 void MainWindow::OnTCSelected(wxCommandEvent& evt)

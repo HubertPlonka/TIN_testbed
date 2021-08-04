@@ -17,6 +17,7 @@ public:
 		tc_callback& tcFunc,
 		std::string& tcNameOfAVRhex);
 
+	// This is invoked from MainWindow after pressing "Test!"
 	void RunTestCase(const std::string& tcName);
 	void RunAllTestCases();
 
@@ -26,8 +27,12 @@ public:
 	* Funkcja do czytania txt ¿eby zrobiæ tc 
 	* (mo¿e byæ w innej klasie czy cuœ)
 	*/
+	void ParseTxt();
 
 private:
+	// jakis obiekt przechowuj¹cy plick txt odczytany przez Parsetxt()
+	// jakisObiekt obiekt{};
+
 	// The optimalest mapa
 	std::unordered_map<std::string, TestCase> listOfTCs;
 };

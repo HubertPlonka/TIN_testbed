@@ -34,6 +34,7 @@ public:
 
 	wxRichTextCtrl* GetTerminal() { return terminalWindow; }
 	wxChoice* GetCOMList() { return COMsel; }
+	wxListBox* GetTCList() { return tcList; }
 
 
 private:

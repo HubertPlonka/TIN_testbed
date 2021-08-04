@@ -43,9 +43,9 @@ namespace tb
         terminal->Newline();
     }
 
-    void GUIManager::SetLoggingLevel(const LogLevel llvl)
+    void GUIManager::SetLoggingLevel(const LogLevel llvl, bool val)
     {
-        logLvl.set((unsigned)llvl);
+        logLvl.set((unsigned)llvl, val);
     }
 
     void GUIManager::PrintConsoleInfo(const std::string& message)
@@ -87,6 +87,42 @@ namespace tb
         terminal->SetDefaultStyle(wxTextAttr(*wxLIGHT_GREY));
         terminal->WriteText(message);
         terminal->Newline();
+    }
+
+    void GUIManager::AddCOMPort(const std::string& name)
+    {
+        auto comList = MainWindow::GetInstance()->GetCOMList();
+
+        comList->AppendString(name);
+    }
+
+    std::string GUIManager::GetSelectedCOM()
+    {
+        auto selectedCOM = MainWindow::GetInstance()->GetCOMList()->GetStringSelection();
+        if (selectedCOM.empty())
+        {
+            PrintConsoleError("COM port not selected, default to COM3"); //idk why lul
+            return "COM3";
+        }
+        return (const char*)selectedCOM;
+    }
+
+    void GUIManager::AddTestCase(TestCase& tc)
+    {
+        auto tcList = MainWindow::GetInstance()->GetTCList();
+        tcList->Append(tc.name);
+    }
+
+    void GUIManager::SaveTestLogToFile(const std::string& fileName)
+    {
+        auto terminal = MainWindow::GetInstance()->GetTerminal();
+        std::string logFileName = fileName + ".log";
+        terminal->SaveFile(logFileName);
+        PrintConsoleInfo("Saved log to " + logFileName);
+    }
+
+    void GUIManager::ClearTestCasesTable()
+    {
     }
 
 } // namespace tb

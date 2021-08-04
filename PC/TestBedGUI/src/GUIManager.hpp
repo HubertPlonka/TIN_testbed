@@ -39,7 +39,7 @@ public:
 	//////////////////////////////////////////////////////
 	// Print to GUI's "console" window
 	//////////////////////////////////////////////////////
-	static void SetLoggingLevel(const LogLevel llvl);
+	static void SetLoggingLevel(const LogLevel llvl, bool val);
 	static void PrintConsoleInfo(const std::string& message);
 	static void PrintConsoleError(const std::string& message);
 	static void PrintConsoleDebug(const std::string& message);
@@ -48,13 +48,13 @@ public:
 		const TestResult result);
 	//////////////////////////////////////////////////////
 
-	void AddCOMPort(std::string& name, unsigned ID);
-	std::string GetSelectedCOM();
+	static void AddCOMPort(const std::string& name);
+	static std::string GetSelectedCOM();
 
-	void AddTestCase(TestCase& tc);
+	static void AddTestCase(TestCase& tc);
 	// TODO: add menu option for this xD
-	void SaveTestLogToFile(const std::string& fileName);
-	void ClearTestCasesTable();
+	static void SaveTestLogToFile(const std::string& fileName);
+	static void ClearTestCasesTable();
 
 private:
 	// Is this even necessary? lul
