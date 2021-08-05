@@ -89,6 +89,7 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(ProjectDir)..\..\..\wxWidgets\include\msvc;$(ProjectDir)..\..\..\wxWidgets\include</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -106,6 +107,7 @@
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(ProjectDir)..\..\..\wxWidgets\include\msvc;$(ProjectDir)..\..\..\wxWidgets\include</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -149,6 +151,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="ext\enumser\enumser.h" />
+    <ClInclude Include="ext\enumser\stdafx.h" />
     <ClInclude Include="src\GUIManager.hpp" />
     <ClInclude Include="src\Launcher.hpp" />
     <ClInclude Include="src\MainWindow.hpp" />
@@ -157,6 +161,8 @@
     <ClInclude Include="src\TestCase.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="ext\enumser\enumser.cpp" />
+    <ClCompile Include="ext\enumser\stdafx.cpp" />
     <ClCompile Include="src\GUIManager.cpp" />
     <ClCompile Include="src\Launcher.cpp" />
     <ClCompile Include="src\MainWindow.cpp" />

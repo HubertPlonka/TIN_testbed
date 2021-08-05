@@ -134,8 +134,25 @@ MainWindow::MainWindow() : wxFrame(
 
 void MainWindow::OnRefreshCOMtable(wxCommandEvent& evt)
 {
-	SerialCom::RefreshAvailableCOMPorts();
-	GUIManager::PrintConsoleDebug("Refreshowanie dziala :)");
+	std::vector<std::string> COMs2Add{};
+	SerialCom::RefreshAvailableCOMPorts(COMs2Add);
+	GUIManager::PrintConsoleInfo("Odœwierzono dostêpne porty szeregowe");
+
+	if (COMs2Add.empty())
+	{
+		GUIManager::PrintConsoleError("Nie znaleziono ¿adnych otwartych portów COM");
+		evt.Skip();
+		return;
+	}
+
+	// Firstly clear current COM list
+	COMsel->Clear();
+
+	for (auto& item : COMs2Add)
+	{
+		COMsel->AppendString(item);
+	}
+
 	evt.Skip();
 }
 
