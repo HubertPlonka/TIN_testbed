@@ -13,6 +13,24 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Pliki nagłówkowe\ext">
+      <UniqueIdentifier>{79ffe7c0-4313-41ec-bc1d-f388f451fd70}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Pliki źródłowe\ext">
+      <UniqueIdentifier>{d4aa156b-6591-44e6-89cf-4cef097a7e45}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Pliki źródłowe\ext\enumser">
+      <UniqueIdentifier>{4f5b508f-a776-42c0-be87-55c8dc60fd76}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Pliki nagłówkowe\ext\enumser">
+      <UniqueIdentifier>{30b1449e-3eca-4037-b27a-b6add4395ee0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Pliki nagłówkowe\ext\SerialComHelper">
+      <UniqueIdentifier>{e9ccff0d-6a3f-441c-947b-261b6c96292a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Pliki źródłowe\ext\SerialComHelper">
+      <UniqueIdentifier>{ae8c9fb2-7e9f-4f80-9c06-359f0e157608}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\GUIManager.hpp">
@@ -33,11 +51,20 @@
     <ClInclude Include="src\SerialCom.hpp">
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
-    <ClInclude Include="ext\enumser\enumser.h">
-      <Filter>Pliki nagłówkowe</Filter>
-    </ClInclude>
     <ClInclude Include="ext\enumser\stdafx.h">
-      <Filter>Pliki nagłówkowe</Filter>
+      <Filter>Pliki nagłówkowe\ext\enumser</Filter>
+    </ClInclude>
+    <ClInclude Include="ext\enumser\enumser.h">
+      <Filter>Pliki nagłówkowe\ext\enumser</Filter>
+    </ClInclude>
+    <ClInclude Include="ext\SerialComHelper\DebugDump.h">
+      <Filter>Pliki nagłówkowe\ext\SerialComHelper</Filter>
+    </ClInclude>
+    <ClInclude Include="ext\SerialComHelper\SerialBuffer.h">
+      <Filter>Pliki nagłówkowe\ext\SerialComHelper</Filter>
+    </ClInclude>
+    <ClInclude Include="ext\SerialComHelper\SerialCommHelper.h">
+      <Filter>Pliki nagłówkowe\ext\SerialComHelper</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -56,11 +83,17 @@
     <ClCompile Include="src\SerialCom.cpp">
       <Filter>Pliki źródłowe</Filter>
     </ClCompile>
-    <ClCompile Include="ext\enumser\enumser.cpp">
-      <Filter>Pliki źródłowe</Filter>
-    </ClCompile>
     <ClCompile Include="ext\enumser\stdafx.cpp">
-      <Filter>Pliki źródłowe</Filter>
+      <Filter>Pliki źródłowe\ext\enumser</Filter>
+    </ClCompile>
+    <ClCompile Include="ext\enumser\enumser.cpp">
+      <Filter>Pliki źródłowe\ext\enumser</Filter>
+    </ClCompile>
+    <ClCompile Include="ext\SerialComHelper\SerialBuffer.cpp">
+      <Filter>Pliki źródłowe\ext\SerialComHelper</Filter>
+    </ClCompile>
+    <ClCompile Include="ext\SerialComHelper\SerialCommHelper.cpp">
+      <Filter>Pliki źródłowe\ext\SerialComHelper</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

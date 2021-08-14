@@ -153,6 +153,9 @@
   <ItemGroup>
     <ClInclude Include="ext\enumser\enumser.h" />
     <ClInclude Include="ext\enumser\stdafx.h" />
+    <ClInclude Include="ext\SerialComHelper\DebugDump.h" />
+    <ClInclude Include="ext\SerialComHelper\SerialBuffer.h" />
+    <ClInclude Include="ext\SerialComHelper\SerialCommHelper.h" />
     <ClInclude Include="src\GUIManager.hpp" />
     <ClInclude Include="src\Launcher.hpp" />
     <ClInclude Include="src\MainWindow.hpp" />
@@ -163,6 +166,8 @@
   <ItemGroup>
     <ClCompile Include="ext\enumser\enumser.cpp" />
     <ClCompile Include="ext\enumser\stdafx.cpp" />
+    <ClCompile Include="ext\SerialComHelper\SerialBuffer.cpp" />
+    <ClCompile Include="ext\SerialComHelper\SerialCommHelper.cpp" />
     <ClCompile Include="src\GUIManager.cpp" />
     <ClCompile Include="src\Launcher.cpp" />
     <ClCompile Include="src\MainWindow.cpp" />
