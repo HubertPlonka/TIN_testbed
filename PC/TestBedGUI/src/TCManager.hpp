@@ -8,17 +8,19 @@
 
 namespace tb 
 {
+using TCMap = std::unordered_map<std::string, TestCase>;
 
 class TCManager
 {
 public:
-	void NewTestCase(
+	static void NewTestCase(
 		std::string& tcName,
 		tc_callback& tcFunc);
 
 	// This is invoked from MainWindow after pressing "Test!"
-	void RunTestCase(const std::string& tcName);
-	void RunAllTestCases();
+	static void RunTestCase(const std::string& tcName);
+	static void RunAllTestCases();
+	static const TCMap& GetAvailableTests();
 	/*
 	* ABANDONED 
 	*/
@@ -26,7 +28,7 @@ public:
 
 private:
 	// The optimalest mapa
-	static std::unordered_map<std::string, TestCase> listOfTCs;
+	static TCMap listOfTCs;
 };
 
 } // namespace tb

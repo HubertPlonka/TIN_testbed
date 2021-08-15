@@ -1,8 +1,17 @@
 /*
 	Here should be defined all test cases as a separate functions 
+
+	@HOW TO CREATE TEST CASE
+	1) Write test function (below apropriate comment)
+		-Function must return void and have 0 parameters (type void())
+	2) Add name and TestCase object to static map on 
+		the bottom of this file
+	
+	TODO: Maybe one day we should compile it as .dll?
 */
 #include "TCManager.hpp"
 #include "GUIManager.hpp"
+#include "SerialCom.hpp"
 
 
 namespace tb
@@ -14,7 +23,7 @@ namespace tb
 
 void ExampleTest()
 {
-	GUIManager::PrintConsoleInfo("Przyk³adowy test");
+	GUIManager::PrintTestState("Przyk³adowy test", TestResult::PASS);
 }
 
 
@@ -22,7 +31,7 @@ void ExampleTest()
 // Table of all test cases used by TCManager 
 ///////////////////////////////////////////////////////////////////////////
 
-std::unordered_map<std::string, TestCase> TCManager::listOfTCs{
+TCMap TCManager::listOfTCs{
 	{"ExampleTest", TestCase("ExampleTest", ExampleTest)}
 };
 

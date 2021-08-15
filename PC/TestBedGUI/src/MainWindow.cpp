@@ -63,11 +63,7 @@ MainWindow::MainWindow() : wxFrame(
 
 	wxStaticText* tcLabel = new wxStaticText(background, wxID_ANY, "Test cases");
 	tcList = new wxListBox(background, ID_TC_LIST);
-	tcList->Append("test1");
-	tcList->Append("test2");
-	tcList->Append("test3");
-	tcList->Append("test3");
-	tcList->Append("RUN ALL");
+	RefreshTCtable();
 
 	selectButton = new wxButton(background, ID_SELECT_BUTTON, "Select");
 	beginTestB = new wxButton(background, ID_BEGIN_TEST_BUTTON, "Test!");
@@ -124,12 +120,29 @@ MainWindow::MainWindow() : wxFrame(
 	SetMinClientSize(wxSize(400, 280));
 	SetMaxClientSize(wxSize(841, 681));
 
-	tcmInst = std::make_shared<TCManager>(TCManager());
-	// tcmInst->TestConsoleOut();
-
 	Bind(wxEVT_BUTTON, &MainWindow::OnTCSelected, this, ID_SELECT_BUTTON);
 	Bind(wxEVT_BUTTON, &MainWindow::OnTestBegin, this, ID_BEGIN_TEST_BUTTON);
 	Bind(wxEVT_MENU, &MainWindow::OnRefreshCOMtable, this, ID_REFRESH_COM_MENU);
+	Bind(wxEVT_MENU, &MainWindow::OnRefreshTCtable, this, ID_REFRESH_TC_MENU);
+}
+
+void MainWindow::RefreshTCtable()
+{
+	const auto& allTcs = TCManager::GetAvailableTests();
+
+	if (allTcs.empty())
+	{
+		GUIManager::PrintConsoleError("List of test cases is empty :(");
+		return;
+	}
+
+	tcList->Clear();
+	tcList->Append("RUN ALL");
+
+	for (auto& tc : allTcs)
+	{
+		tcList->Append(tc.first);
+	}
 }
 
 void MainWindow::OnRefreshCOMtable(wxCommandEvent& evt)
@@ -158,33 +171,35 @@ void MainWindow::OnRefreshCOMtable(wxCommandEvent& evt)
 
 void MainWindow::OnRefreshTCtable(wxCommandEvent& evt)
 {
-	// Here should be invoked func which parses txt and 
-	// creates new txts
-	tcList->Clear();
-	tcList->Append("RUN ALL");
-
+	RefreshTCtable();
+	evt.Skip();
 }
 
 void MainWindow::OnTestBegin(wxCommandEvent& evt)
 {
-	tcmInst->RunTestCase((const char*)tcList->GetStringSelection());
+	if (selTestcase.empty())
+	{
+		GUIManager::PrintConsoleInfo("No test selected (mark test on list and click \"Select\"");
+		evt.Skip();
+		return;
+	}
+	GUIManager::PrintConsoleInfo("Running test ->" + selTestcase);
+	TCManager::RunTestCase(selTestcase);
 	evt.Skip();
 }
 
 void MainWindow::OnTCSelected(wxCommandEvent& evt)
 {
-	std::string tcName{};
-	tcName = tcList->GetStringSelection();
+	selTestcase = tcList->GetStringSelection();
 
-	if (tcName.empty())
+	if (selTestcase.empty())
 	{
-		GUIManager manager;
-		manager.PrintConsoleInfo("Select test case on list before clicking \"Select\"");
+		GUIManager::PrintConsoleInfo("Select test case on list before clicking \"Select\"");
 		evt.Skip();
 		return;
 	}
 
-	tcmInst->RunTestCase(tcName);
+	GUIManager::PrintConsoleInfo("Test \"" + selTestcase + "\" selected");
 	evt.Skip();
 }
 

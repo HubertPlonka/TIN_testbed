@@ -40,4 +40,9 @@ void TCManager::RunAllTestCases()
 	}
 }
 
+const TCMap& TCManager::GetAvailableTests()
+{
+	return listOfTCs;
+}
+
 } // namespace tb

@@ -20,7 +20,6 @@ struct TestCase
 
 	std::string name;
 	tc_callback	Run;
-	std::string nameOfHex4AVR;
 };
 
 } // namespace tb

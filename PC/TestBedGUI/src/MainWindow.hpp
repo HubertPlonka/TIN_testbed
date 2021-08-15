@@ -4,6 +4,7 @@
 #include <wx/richtext/richtextctrl.h>
 
 #include <memory>
+#include <string>
 
 #include "TCManager.hpp"
 
@@ -46,10 +47,11 @@ private:
 	wxListBox* tcList = nullptr;
 	wxButton* selectButton = nullptr;
 
-	// Helpers
-	std::shared_ptr<TCManager> tcmInst;
+	std::string selTestcase;
 
 	void BindAvailableEvents();
+
+	void RefreshTCtable();
 
 	void OnRefreshCOMtable(wxCommandEvent& evt);
 	void OnRefreshTCtable(wxCommandEvent& evt);
