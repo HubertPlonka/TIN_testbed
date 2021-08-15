@@ -37,7 +37,7 @@ komputera ~10 - 20 min), następnie podać w VS2019 ścieżkę do katalogu  ```v
 ## Dodawanie test casów
 
 Ponieważ robienie własnego gcc raczej nie leży w naszych możliwościach \
-czasowychnowe test casy można pisać w C++ w pliku ```TCtable``` (najlepiej  \
+czasowych nowe test casy można pisać w C++ w pliku ```TCtable``` (najlepiej  \
 zgodnie z tutorialem na początku pliku)
 
 ## Wygląd GUI
