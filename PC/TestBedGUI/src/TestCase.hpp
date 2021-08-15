@@ -11,9 +11,8 @@ struct TestCase
 {
 	TestCase(
 		std::string tcName,
-		tc_callback tc,
-		std::string hex4Avr) :
-		name(tcName), Run(tc), nameOfHex4AVR(hex4Avr)
+		tc_callback tc) :
+		name(tcName), Run(tc)
 	{
 	}
 	TestCase() = default;

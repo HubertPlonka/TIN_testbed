@@ -14,27 +14,19 @@ class TCManager
 public:
 	void NewTestCase(
 		std::string& tcName,
-		tc_callback& tcFunc,
-		std::string& tcNameOfAVRhex);
+		tc_callback& tcFunc);
 
 	// This is invoked from MainWindow after pressing "Test!"
 	void RunTestCase(const std::string& tcName);
 	void RunAllTestCases();
-
-	void TestConsoleOut();
-
 	/*
-	* Funkcja do czytania txt ¿eby zrobiæ tc 
-	* (mo¿e byæ w innej klasie czy cuœ)
+	* ABANDONED 
 	*/
-	void ParseTxt();
+	// void ParseTxt();
 
 private:
-	// jakis obiekt przechowuj¹cy plick txt odczytany przez Parsetxt()
-	// jakisObiekt obiekt{};
-
 	// The optimalest mapa
-	std::unordered_map<std::string, TestCase> listOfTCs;
+	static std::unordered_map<std::string, TestCase> listOfTCs;
 };
 
 } // namespace tb

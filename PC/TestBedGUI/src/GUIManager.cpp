@@ -123,6 +123,8 @@ namespace tb
 
     void GUIManager::ClearTestCasesTable()
     {
+        auto tcList = MainWindow::GetInstance()->GetTCList();
+        tcList->Clear();
     }
 
 } // namespace tb

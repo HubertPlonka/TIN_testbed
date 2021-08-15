@@ -39,7 +39,7 @@ void SerialCom::RefreshAvailableCOMPorts(std::vector<std::string>& listOfCOMs)
     }
 
 }
-
+/*  // Not in this relase :)
 void SerialCom::ProgramAVR(const std::string& hexFile)
 {
 }
@@ -48,11 +48,12 @@ void SerialCom::ProgramAVR(TestCase& tc)
 {
 	ProgramAVR(tc.nameOfHex4AVR);
 }
-
-SerialCom::SerialCom(const std::string& portName)
+*/
+SerialCom::SerialCom(const std::string& portName) :
+    COMPort(portName)
 {
     serialComInstance = std::make_unique<CSerialCommHelper>(CSerialCommHelper());
-    serialComInstance->Init();
+    serialComInstance->Init(portName);
     serialComInstance->Start();
 }
 

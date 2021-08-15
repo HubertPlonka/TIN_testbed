@@ -66,6 +66,9 @@
     <ClInclude Include="ext\SerialComHelper\SerialCommHelper.h">
       <Filter>Pliki nagłówkowe\ext\SerialComHelper</Filter>
     </ClInclude>
+    <ClInclude Include="src\TCParser.hpp">
+      <Filter>Pliki nagłówkowe</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\GUIManager.cpp">
@@ -94,6 +97,12 @@
     </ClCompile>
     <ClCompile Include="ext\SerialComHelper\SerialCommHelper.cpp">
       <Filter>Pliki źródłowe\ext\SerialComHelper</Filter>
+    </ClCompile>
+    <ClCompile Include="src\TCParser.cpp">
+      <Filter>Pliki źródłowe</Filter>
+    </ClCompile>
+    <ClCompile Include="src\TCtable.cpp">
+      <Filter>Pliki źródłowe</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

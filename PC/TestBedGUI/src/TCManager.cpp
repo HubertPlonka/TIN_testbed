@@ -5,9 +5,9 @@
 namespace tb
 {
 
-void TCManager::NewTestCase(std::string& tcName, tc_callback& tcFunc, std::string& tcNameOfAVRhex)
+void TCManager::NewTestCase(std::string& tcName, tc_callback& tcFunc)
 {
-	listOfTCs[tcName] = TestCase(tcName, tcFunc, tcNameOfAVRhex);
+	listOfTCs[tcName] = TestCase(tcName, tcFunc);
 }
 
 void TCManager::RunTestCase(const std::string& tcName)
@@ -38,17 +38,6 @@ void TCManager::RunAllTestCases()
 	{
 		tc.second.Run();
 	}
-}
-
-void TCManager::TestConsoleOut()
-{
-	GUIManager inst{};
-
-	unsigned szofGm = sizeof(GUIManager);
-	std::string sizeString = std::to_string(szofGm);
-	std::string mes = "Rozmiar GUI managera ->";
-
-	inst.PrintConsoleInfo(mes + sizeString);
 }
 
 } // namespace tb

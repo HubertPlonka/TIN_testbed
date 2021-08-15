@@ -1,0 +1,29 @@
+/*
+	Here should be defined all test cases as a separate functions 
+*/
+#include "TCManager.hpp"
+#include "GUIManager.hpp"
+
+
+namespace tb
+{
+
+///////////////////////////////////////////////////////////////////////////
+// Test case functions 
+///////////////////////////////////////////////////////////////////////////
+
+void ExampleTest()
+{
+	GUIManager::PrintConsoleInfo("Przyk³adowy test");
+}
+
+
+///////////////////////////////////////////////////////////////////////////
+// Table of all test cases used by TCManager 
+///////////////////////////////////////////////////////////////////////////
+
+std::unordered_map<std::string, TestCase> TCManager::listOfTCs{
+	{"ExampleTest", TestCase("ExampleTest", ExampleTest)}
+};
+
+} // namespace tb

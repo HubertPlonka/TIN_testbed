@@ -161,6 +161,7 @@
     <ClInclude Include="src\MainWindow.hpp" />
     <ClInclude Include="src\SerialCom.hpp" />
     <ClInclude Include="src\TCManager.hpp" />
+    <ClInclude Include="src\TCParser.hpp" />
     <ClInclude Include="src\TestCase.hpp" />
   </ItemGroup>
   <ItemGroup>
@@ -173,6 +174,8 @@
     <ClCompile Include="src\MainWindow.cpp" />
     <ClCompile Include="src\SerialCom.cpp" />
     <ClCompile Include="src\TCManager.cpp" />
+    <ClCompile Include="src\TCParser.cpp" />
+    <ClCompile Include="src\TCtable.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

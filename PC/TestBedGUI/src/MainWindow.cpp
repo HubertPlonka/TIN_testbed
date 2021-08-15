@@ -114,7 +114,7 @@ MainWindow::MainWindow() : wxFrame(
 
 	terminalBox->Add(terminalWindow, 1, wxEXPAND | (wxALL & ~wxTOP), BorderWidth);
 
-	bgBox->Add(UIBox, 3, wxEXPAND | (wxUP | wxRIGHT | wxLEFT), BorderWidth);
+	bgBox->Add(UIBox, 0, wxEXPAND | (wxUP | wxRIGHT | wxLEFT), BorderWidth);
 	bgBox->Add(terminalBox, 2, wxEXPAND | wxDOWN | wxRIGHT | wxLEFT, BorderWidth);
 
 	background->SetSizer(bgBox);
@@ -122,10 +122,10 @@ MainWindow::MainWindow() : wxFrame(
 	SetMenuBar(menu);
 	Centre();
 	SetMinClientSize(wxSize(400, 280));
-	SetMaxClientSize(wxSize(841, 481));
+	SetMaxClientSize(wxSize(841, 681));
 
 	tcmInst = std::make_shared<TCManager>(TCManager());
-	tcmInst->TestConsoleOut();
+	// tcmInst->TestConsoleOut();
 
 	Bind(wxEVT_BUTTON, &MainWindow::OnTCSelected, this, ID_SELECT_BUTTON);
 	Bind(wxEVT_BUTTON, &MainWindow::OnTestBegin, this, ID_BEGIN_TEST_BUTTON);
@@ -160,6 +160,9 @@ void MainWindow::OnRefreshTCtable(wxCommandEvent& evt)
 {
 	// Here should be invoked func which parses txt and 
 	// creates new txts
+	tcList->Clear();
+	tcList->Append("RUN ALL");
+
 }
 
 void MainWindow::OnTestBegin(wxCommandEvent& evt)
