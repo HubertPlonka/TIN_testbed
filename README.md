@@ -34,6 +34,12 @@ wxWidgets i skompilować samodzielnie (trwa to zależnie od \
 komputera ~10 - 20 min), następnie podać w VS2019 ścieżkę do katalogu  ```vc_lib``` (dołączenie statycznej biblioteki)
 ```include``` oraz ```include\msvc```
 
+## Dodawanie test casów
+
+Ponieważ robienie własnego gcc raczej nie leży w naszych możliwościach \
+czasowychnowe test casy można pisać w C++ w pliku ```TCtable``` (najlepiej  \
+zgodnie z tutorialem na początku pliku)
+
 ## Wygląd GUI
 
 ![Obrazek](https://github.com/Commentsareuseless/TIN_testbed/blob/main/Schematics/GUI.PNG)
