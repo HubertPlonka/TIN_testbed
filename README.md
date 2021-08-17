@@ -34,6 +34,12 @@ wxWidgets i skompilować samodzielnie (trwa to zależnie od \
 komputera ~10 - 20 min), następnie podać w VS2019 ścieżkę do katalogu  ```vc_lib``` (dołączenie statycznej biblioteki)
 ```include``` oraz ```include\msvc```
 
+### WAŻNA SPRAWA O KTÓREJ ZAPOMNIAŁEM WCZEŚNIEJ
+
+Żeby projekt się skompilował w VS2019 target musi być ustawiony na ```x86``` a konfiguracja buildu na `relase`
+Jest tak dlatego że statyczne biblioteki wxWidgets są turbo ciężkie (wszystko razem waży ok. 2-3GB) dlatego
+zostawiłem tylko 1 konfiguracjię :)
+
 ## Dodawanie test casów
 
 Ponieważ robienie własnego gcc raczej nie leży w naszych możliwościach \
