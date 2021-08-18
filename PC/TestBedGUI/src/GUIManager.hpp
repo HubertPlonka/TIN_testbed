@@ -33,6 +33,12 @@ enum class TestResult : unsigned
 	FAIL
 };
 
+enum class ConnectedDevice : unsigned
+{
+	STM,
+	AVR
+};
+
 class GUIManager
 {
 public:
@@ -49,7 +55,7 @@ public:
 	//////////////////////////////////////////////////////
 
 	static void AddCOMPort(const std::string& name);
-	static std::string GetSelectedCOM();
+	static std::string GetSelectedCOM(ConnectedDevice dev);
 
 	static void AddTestCase(TestCase& tc);
 	// TODO: add menu option for this xD

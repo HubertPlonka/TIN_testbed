@@ -54,8 +54,10 @@ MainWindow::MainWindow() : wxFrame(
 	// COM port selection field
 	////////////////////////////////////////////////////////////////
 
-	wxStaticText* COMLabel = new wxStaticText(background, wxID_ANY, "COM selection");
-	COMsel = new wxChoice(background, ID_COM_PORT_SEL);
+	wxStaticText* COMLabel_AVR = new wxStaticText(background, wxID_ANY, "COM selection (AVR)");
+	COMsel_AVR = new wxChoice(background, ID_COM_PORT_SEL_AVR);
+	wxStaticText* COMLabel_STM = new wxStaticText(background, wxID_ANY, "COM selection (STM)");
+	COMsel_STM = new wxChoice(background, ID_COM_PORT_SEL_STM);
 
 	////////////////////////////////////////////////////////////////
 	// Test case selection area
@@ -63,7 +65,6 @@ MainWindow::MainWindow() : wxFrame(
 
 	wxStaticText* tcLabel = new wxStaticText(background, wxID_ANY, "Test cases");
 	tcList = new wxListBox(background, ID_TC_LIST);
-	RefreshTCtable();
 
 	selectButton = new wxButton(background, ID_SELECT_BUTTON, "Select");
 	beginTestB = new wxButton(background, ID_BEGIN_TEST_BUTTON, "Test!");
@@ -97,8 +98,10 @@ MainWindow::MainWindow() : wxFrame(
 	buttonBox->Add(selectButton, 1, wxALL, BorderWidth);
 	buttonBox->Add(beginTestB, 1, wxALL, BorderWidth);
 
-	selectionBox->Add(COMLabel, 0, wxALIGN_CENTER_HORIZONTAL);
-	selectionBox->Add(COMsel, 0, wxALIGN_CENTER_HORIZONTAL | wxEXPAND | wxLEFT | wxRIGHT, 14);
+	selectionBox->Add(COMLabel_AVR, 0, wxALIGN_CENTER_HORIZONTAL);
+	selectionBox->Add(COMsel_AVR, 0, wxALIGN_CENTER_HORIZONTAL | wxEXPAND | wxLEFT | wxRIGHT, 14);
+	selectionBox->Add(COMLabel_STM, 0, wxALIGN_CENTER_HORIZONTAL);
+	selectionBox->Add(COMsel_STM, 0, wxALIGN_CENTER_HORIZONTAL | wxEXPAND | wxLEFT | wxRIGHT, 14);
 	selectionBox->Add(tcLabel, 0, wxALIGN_CENTER_HORIZONTAL);
 	selectionBox->Add(tcList, 1, wxEXPAND | wxALL, BorderWidth);
 	selectionBox->Add(buttonBox, 0,  wxALL | wxALIGN_CENTER , BorderWidth);
@@ -124,6 +127,9 @@ MainWindow::MainWindow() : wxFrame(
 	Bind(wxEVT_BUTTON, &MainWindow::OnTestBegin, this, ID_BEGIN_TEST_BUTTON);
 	Bind(wxEVT_MENU, &MainWindow::OnRefreshCOMtable, this, ID_REFRESH_COM_MENU);
 	Bind(wxEVT_MENU, &MainWindow::OnRefreshTCtable, this, ID_REFRESH_TC_MENU);
+
+	RefreshTCtable();
+	RefreshCOMtable();
 }
 
 void MainWindow::RefreshTCtable()
@@ -143,9 +149,11 @@ void MainWindow::RefreshTCtable()
 	{
 		tcList->Append(tc.first);
 	}
+
+	GUIManager::PrintConsoleInfo("Wykryto " + std::to_string(tcList->GetCount() - 1) + (" aktywnych scenariuszy"));
 }
 
-void MainWindow::OnRefreshCOMtable(wxCommandEvent& evt)
+void MainWindow::RefreshCOMtable()
 {
 	std::vector<std::string> COMs2Add{};
 	SerialCom::RefreshAvailableCOMPorts(COMs2Add);
@@ -154,18 +162,23 @@ void MainWindow::OnRefreshCOMtable(wxCommandEvent& evt)
 	if (COMs2Add.empty())
 	{
 		GUIManager::PrintConsoleError("Nie znaleziono ¿adnych otwartych portów COM");
-		evt.Skip();
 		return;
 	}
 
 	// Firstly clear current COM list
-	COMsel->Clear();
+	COMsel_AVR->Clear();
+	COMsel_STM->Clear();
 
 	for (auto& item : COMs2Add)
 	{
-		COMsel->AppendString(item);
+		COMsel_AVR->AppendString(item);
+		COMsel_STM->AppendString(item);
 	}
+}
 
+void MainWindow::OnRefreshCOMtable(wxCommandEvent& evt)
+{
+	RefreshCOMtable();
 	evt.Skip();
 }
 

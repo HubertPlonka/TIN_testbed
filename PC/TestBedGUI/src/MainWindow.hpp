@@ -20,7 +20,8 @@ enum WidgetID : int
 	ID_SELECT_BUTTON,
 	ID_TC_LIST,
 	ID_TERMINAL,
-	ID_COM_PORT_SEL,
+	ID_COM_PORT_SEL_AVR,
+	ID_COM_PORT_SEL_STM,
 	ID_REFRESH_COM_MENU,
 	ID_REFRESH_TC_MENU,
 	ID_PROGRAM_AVR_MENU
@@ -34,7 +35,8 @@ public:
 	static MainWindow* GetInstance() { return instance; }
 
 	wxRichTextCtrl* GetTerminal() { return terminalWindow; }
-	wxChoice* GetCOMList() { return COMsel; }
+	wxChoice* GetAVRCOMList() { return COMsel_AVR; }
+	wxChoice* GetSTMCOMList() { return COMsel_STM; }
 	wxListBox* GetTCList() { return tcList; }
 
 
@@ -43,7 +45,8 @@ private:
 
 	wxButton* beginTestB = nullptr;
 	wxRichTextCtrl* terminalWindow = nullptr;
-	wxChoice* COMsel = nullptr;
+	wxChoice* COMsel_AVR = nullptr;
+	wxChoice* COMsel_STM = nullptr;
 	wxListBox* tcList = nullptr;
 	wxButton* selectButton = nullptr;
 
@@ -52,6 +55,7 @@ private:
 	void BindAvailableEvents();
 
 	void RefreshTCtable();
+	void RefreshCOMtable();
 
 	void OnRefreshCOMtable(wxCommandEvent& evt);
 	void OnRefreshTCtable(wxCommandEvent& evt);

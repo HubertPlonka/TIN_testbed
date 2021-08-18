@@ -16,6 +16,10 @@
 
 namespace tb
 {
+// KOMENDY WYSY£ANE PRZEZ UART
+// 0x01 - READ BYTES
+// 0x02 - WRITE PINS
+
 
 ///////////////////////////////////////////////////////////////////////////
 // Test case functions 
@@ -26,13 +30,19 @@ void ExampleTest()
 	GUIManager::PrintTestState("Przyk³adowy test", TestResult::PASS);
 }
 
+void TestSerialCommunication()
+{
+	SerialCom AVR_COM(GUIManager::GetSelectedCOM(ConnectedDevice::AVR));
+
+}
 
 ///////////////////////////////////////////////////////////////////////////
 // Table of all test cases used by TCManager 
 ///////////////////////////////////////////////////////////////////////////
 
 TCMap TCManager::listOfTCs{
-	{"ExampleTest", TestCase("ExampleTest", ExampleTest)}
+	{"ExampleTest", TestCase("ExampleTest", ExampleTest)},
+	{"TestSerialCommunication", TestCase("TestSerialCommunication", TestSerialCommunication)}
 };
 
 } // namespace tb

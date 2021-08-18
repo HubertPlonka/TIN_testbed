@@ -91,20 +91,30 @@ namespace tb
 
     void GUIManager::AddCOMPort(const std::string& name)
     {
-        auto comList = MainWindow::GetInstance()->GetCOMList();
+        auto comList = MainWindow::GetInstance()->GetAVRCOMList();
 
         comList->AppendString(name);
     }
 
-    std::string GUIManager::GetSelectedCOM()
+    std::string GUIManager::GetSelectedCOM(ConnectedDevice dev)
     {
-        auto selectedCOM = MainWindow::GetInstance()->GetCOMList()->GetStringSelection();
+        std::string selectedCOM{};
+        if (dev == ConnectedDevice::AVR)
+        {
+            selectedCOM = MainWindow::GetInstance()->GetAVRCOMList()->GetStringSelection();
+        }
+
+        if (dev == ConnectedDevice::STM)
+        {
+            selectedCOM = MainWindow::GetInstance()->GetSTMCOMList()->GetStringSelection();
+        }
+
         if (selectedCOM.empty())
         {
             PrintConsoleError("COM port not selected, default to COM3"); //idk why lul
             return "COM3";
         }
-        return (const char*)selectedCOM;
+        return selectedCOM;
     }
 
     void GUIManager::AddTestCase(TestCase& tc)

@@ -24,7 +24,7 @@ public:
 	void Write2COM(const std::string& message);
 
 private:
-	SerialCom(SerialCom&) = delete;	// No copying, we use one COM port so only 1 object at a time :)
+	SerialCom(SerialCom&) = delete;	// No copying, One COM = One class instance
 	std::string COMPort;
 };
 

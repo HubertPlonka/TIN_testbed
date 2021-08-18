@@ -9,13 +9,14 @@
 
 #include <cstdio>
 #include <memory>
+#include <unordered_map>
 
 namespace tb
 {
     static constexpr char PING_REQ[]    = "PING";
     static constexpr char PING_RESP[]   = "PONG";
 
-    static std::unique_ptr<CSerialCommHelper> serialComInstance;
+    static std::unordered_map<std::string, std::unique_ptr<CSerialCommHelper>> serialComInstanceList;
 
 static void SygnalizeError(const std::string& errMessage, HRESULT errCode)
 {
@@ -37,31 +38,23 @@ void SerialCom::RefreshAvailableCOMPorts(std::vector<std::string>& listOfCOMs)
     {
         SygnalizeError("CEnumerateSerial::UsingCreateFile failed", GetLastError());
     }
-
-}
-/*  // Not in this relase :)
-void SerialCom::ProgramAVR(const std::string& hexFile)
-{
 }
 
-void SerialCom::ProgramAVR(TestCase& tc)
-{
-	ProgramAVR(tc.nameOfHex4AVR);
-}
-*/
 SerialCom::SerialCom(const std::string& portName) :
     COMPort(portName)
 {
-    serialComInstance = std::make_unique<CSerialCommHelper>(CSerialCommHelper());
-    serialComInstance->Init(portName);
-    serialComInstance->Start();
+    serialComInstanceList[COMPort] = std::make_unique<CSerialCommHelper>(CSerialCommHelper());
+    auto& COMInst = serialComInstanceList[COMPort];
+    COMInst->Init(portName);
+    COMInst->Start();
 }
 
 SerialCom::~SerialCom()
 {
-    serialComInstance->Stop();
-    serialComInstance->UnInit();
-    serialComInstance.release();
+    auto& COMInst = serialComInstanceList[COMPort];
+    COMInst->Stop();
+    COMInst->UnInit();
+    COMInst.release();
 }
 
 void SerialCom::PingCOM()
@@ -91,24 +84,26 @@ void SerialCom::PingCOM()
 
 void SerialCom::ReadCOM(std::string& messageBuff)
 {
-    if (!serialComInstance)
+    auto& COMInst = serialComInstanceList[COMPort];
+    if (!COMInst)
     {
         GUIManager::PrintConsoleError("Port communication uninitialized");
         return;
     }
 
-    serialComInstance->ReadAvailable(messageBuff);
+    COMInst->ReadAvailable(messageBuff);
 }
 
 void SerialCom::Write2COM(const std::string& message)
 {
-    if (!serialComInstance)
+    auto& COMInst = serialComInstanceList[COMPort];
+    if (!COMInst)
     {
         GUIManager::PrintConsoleError("Port communication uninitialized");
         return;
     }
 
-    serialComInstance->Write(message.c_str(), message.size());
+    COMInst->Write(message.c_str(), message.size());
 }
 
 }
