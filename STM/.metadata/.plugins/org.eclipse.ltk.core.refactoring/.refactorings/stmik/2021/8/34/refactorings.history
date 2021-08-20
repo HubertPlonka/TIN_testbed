@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;stmik/Core/Inc/receive&apos; to &apos;receive.h&apos;" description="Rename resource &apos;receive&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="Core/Inc/receive" name="receive.h" stamp="1629462045719" updateReferences="true"/>
+</session>
