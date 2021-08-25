@@ -24,12 +24,15 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "receive.h"
+#include "send.h"
+#include "gpio.h"
+#include "readA.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN PTD */
-uint8_t UART2_rxBuffer[12] = {0};
+
 /* USER CODE END PTD */
 
 /* Private define ------------------------------------------------------------*/
@@ -44,7 +47,7 @@ uint8_t UART2_rxBuffer[12] = {0};
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
-uint8_t buffer[4] = "hej2";
+//uint8_t buffer[4] = "hej3";
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -66,7 +69,8 @@ void SystemClock_Config(void);
 int main(void)
 {
   /* USER CODE BEGIN 1 */
-
+//receive();
+send();
   /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
@@ -101,11 +105,19 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+	  //powiesz że gówno robię. masz rację. przykro mi. ale zacząłem siedzieć i teraz wiem że to zrobię.
+	  //mam problem z wkłądaniem i wyciąganiem danych z/do buforów uart.
+	  //koryciak ostatni raz na teamsach był w niedzielę xd
+	  //a mógłbym to napisać w "arduino to stm"?
+	  receive();
+	 // if(UART2_rxBuffer == "ping")
+	  	//{
+	  	//	UART2_txBuffer = "pong";
+	  //	}
+	  send();
+	  HAL_GPIO_TogglePin(LD2_GPIO_Port, LD2_Pin);
+	  		HAL_Delay(100);
     /* USER CODE END WHILE */
-	  HAL_UART_Receive (&huart2, UART2_rxBuffer, 12, 5000);
-	      HAL_UART_Transmit(&huart2, UART2_rxBuffer, 12, 100);
-	         // HAL_UART_Transmit(&huart2, buffer, sizeof(buffer), 100);
-	         // receive();
 
     /* USER CODE BEGIN 3 */
   }

@@ -1,4 +1,3 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring comment="Delete resource &apos;stmik/Core/Inc/receive.h&apos;" deleteContents="false" description="Delete resource &apos;stmik/Core/Inc/receive.h&apos;" element1="/stmik/Core/Inc/receive.h" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1629462121108"/>
+<session version="1.0">&#x0A;<refactoring comment="Delete resource &apos;stmik/Core/Inc/receive.h&apos;" deleteContents="false" description="Delete resource &apos;stmik/Core/Inc/receive.h&apos;" element1="/stmik/Core/Inc/receive.h" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1629462121108"/>&#x0A;<refactoring comment="Delete resource &apos;stmik/Core/Src/send.h&apos;" deleteContents="false" description="Delete resource &apos;stmik/Core/Src/send.h&apos;" element1="/stmik/Core/Src/send.h" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1629928042936"/>
 </session>
