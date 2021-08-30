@@ -12,23 +12,23 @@ char * readPort(char * option)
 
 	if (strcmp(option, "RDPB") == 0) {
 
-		reading[0] = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_3);
-		reading[1] = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_2);
-		reading[2] = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_10);
-		reading[3] = HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_3);
-		reading[4] = HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_5);
-		reading[5] = HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_4);
+		reading[0] = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_10);
+		reading[1] = HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_5);
+		reading[2] = HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_4);
+		reading[3] = HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_10);
+		reading[4] = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_8);
+		reading[5] = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_9);
 		HAL_UART_Transmit(&huart2, (char *) reading, 6, 100);
 	}
 	else if(strcmp(option, "RDPC") == 0) {
-		reading[0] = HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_10);
-		reading[1] = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_8);
-		reading[2] = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_9);
-		reading[3] = HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_7);
-		reading[4] = HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_6);
-		reading[5] = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_7);
-		reading[6] = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_6);
-		reading[7] = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_5);
+		reading[0] = HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_7);
+		reading[1] = HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_6);
+		reading[2] = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_7);
+		reading[3] = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_6);
+		reading[4] = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_5);
+		reading[5] = HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_9);
+		reading[6] = HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_8);
+		reading[7] = HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_9);
 	}
 	else if (strcmp(option, "RDPD") == 0) {
 		reading[0] = HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_2);
@@ -41,20 +41,20 @@ char * readPort(char * option)
 		reading[7] = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_0);
 	}
 	else if (strcmp(option, "RDAL") == 0) {
-		reading[0] = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_3);
-		reading[1] = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_2);
-		reading[2] = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_10);
-		reading[3] = HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_3);
-		reading[4] = HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_5);
-		reading[5] = HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_4);
-		reading[6] = HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_10);
-		reading[7] = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_8);
-		reading[8] = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_9);
-		reading[9] = HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_7);
-		reading[10] = HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_6);
-		reading[11] = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_7);
-		reading[12] = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_6);
-		reading[13] = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_5);
+		reading[0] = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_10);
+		reading[1] = HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_5);
+		reading[2] = HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_4);
+		reading[3] = HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_10);
+		reading[4] = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_8);
+		reading[5] = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_9);
+		reading[6] = HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_7);
+		reading[7] = HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_6);
+		reading[8] = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_7);
+		reading[9] = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_6);
+		reading[10] = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_5);
+		reading[11] = HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_9);
+		reading[12] = HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_8);
+		reading[13] = HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_9);
 		reading[14] = HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_2);
 		reading[15] = HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_3);
 		reading[16] = HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_0);
