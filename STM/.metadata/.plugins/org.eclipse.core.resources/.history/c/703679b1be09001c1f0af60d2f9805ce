@@ -119,7 +119,7 @@ int main(void)
 	  result = readPort(option);
 	  //HAL_UART_Transmit(&huart2, "hej5", 4, 100);
 	  send(result);
-	  //HAL_GPIO_TogglePin(LD2_GPIO_Port, LD2_Pin);
+	  HAL_GPIO_TogglePin(LD2_GPIO_Port, LD2_Pin);
 	  		HAL_Delay(100);
     /* USER CODE END WHILE */
 

@@ -2,18 +2,11 @@
 #include "gpio.h"
 #include "usart.h"
 #include "stm32f4xx_hal.h"
-#include <string.h>
-
 
 char * reading;
 
-char * readPort(char * option)
-{
-	if(strcmp(option, "PING") == 0)
-{
-	  HAL_UART_Transmit(&huart2, "PONG", 4, 100);
-	 // HAL_GPIO_TogglePin(LD2_GPIO_Port, LD2_Pin);
-}/*
+char * readPort(char * port)
+{HAL_GPIO_TogglePin(LD2_GPIO_Port, LD2_Pin);
 	if (port == "RDPB") {
 		reading[0] = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_3);
 		reading[1] = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_2);
@@ -65,6 +58,6 @@ char * readPort(char * option)
 		reading[19] = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_4);
 		reading[20] = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_1);
 		reading[21] = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_0);
-	}*/
+	}
 	return reading;
 };

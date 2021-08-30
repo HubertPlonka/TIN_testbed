@@ -3,7 +3,7 @@
 #include "usart.h"
 #include "stm32f4xx_hal.h"
 
-uint8_t Rx_data[4];
+char * Rx_data[4];
 char * option;
 
 char* receive()
@@ -16,7 +16,5 @@ HAL_UART_Receive (&huart2, Rx_data, 4, 5000);/*
 	  //char* option = (char*) Rx_data;
 
 option = Rx_data;
-
-
 	  return option;
 };

@@ -16,7 +16,11 @@ HAL_UART_Receive (&huart2, Rx_data, 4, 5000);/*
 	  //char* option = (char*) Rx_data;
 
 option = Rx_data;
-
+if((Rx_data[0] == 'P') && (Rx_data[1] == 'I') && (Rx_data[2] == 'N') && (Rx_data[3] == 'G'))
+{
+	  HAL_UART_Transmit(&huart2, "PONG", 4, 100);
+	  HAL_GPIO_TogglePin(LD2_GPIO_Port, LD2_Pin);
+}
 
 	  return option;
 };
