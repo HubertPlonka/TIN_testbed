@@ -9,16 +9,18 @@ char * reading;
 
 char * readPort(char * option)
 {
-
+	if(strcmp(option, "PING") == 0)
+{
+	  HAL_UART_Transmit_IT(&huart2, "PONG", 4);
+	 // HAL_GPIO_TogglePin(LD2_GPIO_Port, LD2_Pin);
+}
 	if (strcmp(option, "RDPB") == 0) {
-
 		reading[0] = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_3);
 		reading[1] = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_2);
 		reading[2] = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_10);
 		reading[3] = HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_3);
 		reading[4] = HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_5);
 		reading[5] = HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_4);
-		HAL_UART_Transmit(&huart2, (char *) reading, 6, 100);
 	}
 	else if(strcmp(option, "RDPC") == 0) {
 		reading[0] = HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_10);

@@ -114,17 +114,17 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-		if (HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_3) == GPIO_PIN_RESET) {
-			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, GPIO_PIN_SET);
+		if (HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_3) == GPIO_PIN_SET) {
+			HAL_GPIO_WritePin(LD2_GPIO_Port, LD2_Pin, GPIO_PIN_SET);
 		} else {
-			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, GPIO_PIN_RESET);
+			HAL_GPIO_WritePin(LD2_GPIO_Port, LD2_Pin, GPIO_PIN_RESET);
 		}
-	  //option = receive();
+	 // option = receive();
 	  //result = readPort(option);
 	  //HAL_UART_Transmit(&huart2, "hej5", 4, 100);
-	  //send(result);
+	 // send(result);
 	  //HAL_GPIO_TogglePin(LD2_GPIO_Port, LD2_Pin);
-	  		//HAL_Delay(100);
+	  		HAL_Delay(100);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */

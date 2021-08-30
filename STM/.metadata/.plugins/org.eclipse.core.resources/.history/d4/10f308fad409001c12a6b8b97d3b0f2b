@@ -11,8 +11,11 @@ char * readPort(char * option)
 {
 
 	if (strcmp(option, "RDPB") == 0) {
-
+		reading[0] = 2;
+		if(reading[0] == 0)
+						{HAL_GPIO_TogglePin(LD2_GPIO_Port, LD2_Pin);}
 		reading[0] = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_3);
+
 		reading[1] = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_2);
 		reading[2] = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_10);
 		reading[3] = HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_3);
