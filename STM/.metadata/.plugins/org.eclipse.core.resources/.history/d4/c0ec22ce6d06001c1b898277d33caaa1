@@ -1,0 +1,34 @@
+#include "receive.h"
+#include "gpio.h"
+#include "usart.h"
+#include "stm32f4xx_hal.h"
+
+uint8_t buff[] = {0};
+uint8_t messType;
+
+
+uint8_t receive()
+{
+	HAL_UART_Receive (&huart2, buff, 12, 5000);
+switch(buff)
+{
+case "0000ping":
+	messType = "pong";
+	break;
+case "00010002":
+	messType = 'A';
+	break;
+case "00010004":
+	messType = 'B';
+	break;
+case "00010006":
+	messType = 'C';
+	break;
+case "00010008":
+	messType = 'D';
+	break;
+}
+	return messType;
+	//HAL_GPIO_TogglePin(LD2_GPIO_Port, LD2_Pin);
+	//		HAL_Delay(100);
+};

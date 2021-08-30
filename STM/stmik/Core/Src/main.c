@@ -28,6 +28,7 @@
 #include "send.h"
 #include "gpio.h"
 #include "readA.h"
+#include <string.h>
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -48,6 +49,10 @@
 
 /* USER CODE BEGIN PV */
 //uint8_t buffer[4] = "hej3";
+uint8_t Rx_data[4];
+uint8_t Tx_data[4];
+char str;
+
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -70,7 +75,7 @@ int main(void)
 {
   /* USER CODE BEGIN 1 */
 //receive();
-send();
+//send();
   /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
@@ -80,7 +85,10 @@ send();
 
   /* USER CODE BEGIN Init */
 
-
+  void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
+  {
+    HAL_UART_Receive_IT(&huart2, Rx_data, 4);
+  }
 
 
 
@@ -105,16 +113,9 @@ send();
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-	  //powiesz że gówno robię. masz rację. przykro mi. ale zacząłem siedzieć i teraz wiem że to zrobię.
-	  //mam problem z wkłądaniem i wyciąganiem danych z/do buforów uart.
-	  //koryciak ostatni raz na teamsach był w niedzielę xd
-	  //a mógłbym to napisać w "arduino to stm"?
 	  receive();
-	 // if(UART2_rxBuffer == "ping")
-	  	//{
-	  	//	UART2_txBuffer = "pong";
-	  //	}
-	  send();
+	  //HAL_UART_Transmit(&huart2, "hej5", 4, 100);
+	  //send();
 	  HAL_GPIO_TogglePin(LD2_GPIO_Port, LD2_Pin);
 	  		HAL_Delay(100);
     /* USER CODE END WHILE */
