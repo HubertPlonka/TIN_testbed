@@ -7,6 +7,6 @@
 
 
 
-void receive();
+char* receive();
 
 #endif /* INC_RECEIVE_H_ */

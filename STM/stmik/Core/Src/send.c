@@ -3,11 +3,11 @@
 #include "usart.h"
 #include "stm32f4xx_hal.h"
 
-uint8_t UART2_txBuffer[4] = "hej4";
+uint8_t UART2_txBuffer[22] = {0};
 
-void send()
+void send(char * reading)
 {
 
-	HAL_UART_Transmit(&huart2, UART2_txBuffer, 4, 100);
+	HAL_UART_Transmit(&huart2, reading, 22, 100);
 
 };

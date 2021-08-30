@@ -1,0 +1,62 @@
+#include <readPort.h>
+#include "gpio.h"
+#include "usart.h"
+#include "stm32f4xx_hal.h"
+
+char * reading;
+
+char * readA(char * port)
+{
+	if (port == "RDPB") {
+	    port[0] = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_3);
+		port[1] = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_2);
+		port[2] = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_10);
+		port[3] = HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_3);
+		port[4] = HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_5);
+		port[5] = HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_4);
+	}
+	else if(port == "RDPC") {
+	    port[0] = HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_10);
+		port[1] = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_8);
+		port[2] = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_9);
+		port[3] = HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_7);
+		port[4] = HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_6);
+		port[5] = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_7);
+		port[6] = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_6);
+		port[7] = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_5);
+	}
+	else if (port == "RDPD") {
+		port[0] = HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_2);
+		port[1] = HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_3);
+		port[2] = HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_0);
+		port[3] = HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_1);
+		port[4] = HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_0);
+		port[5] = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_4);
+		port[6] = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_1);
+		port[7] = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_0);
+	}
+	else if (port == "RDAL") {
+	    port[0] = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_3);
+		port[1] = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_2);
+		port[2] = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_10);
+		port[3] = HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_3);
+		port[4] = HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_5);
+		port[5] = HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_4);
+	    port[6] = HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_10);
+		port[7] = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_8);
+		port[8] = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_9);
+		port[9] = HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_7);
+		port[10] = HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_6);
+		port[11] = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_7);
+		port[12] = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_6);
+		port[13] = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_5);
+		port[14] = HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_2);
+		port[15] = HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_3);
+		port[16] = HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_0);
+		port[17] = HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_1);
+		port[18] = HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_0);
+		port[19] = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_4);
+		port[20] = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_1);
+		port[21] = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_0);
+	}
+};

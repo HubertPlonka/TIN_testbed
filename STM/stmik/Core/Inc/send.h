@@ -5,5 +5,5 @@
 #include <stm32f4xx_hal.h>
 
 
-void send();
+void  send(char* reading);
 #endif /* INC_SEND_H_ */

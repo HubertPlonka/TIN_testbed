@@ -21,12 +21,14 @@
 #include "main.h"
 #include "usart.h"
 #include "gpio.h"
-#include "receive.h"
-#include "send.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "receive.h"
+#include "send.h"
+#include "gpio.h"
+#include "readPort.h"
+#include <string.h>
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -47,6 +49,10 @@
 
 /* USER CODE BEGIN PV */
 //uint8_t buffer[4] = "hej3";
+uint8_t Rx_data[4];
+uint8_t Tx_data[4];
+char * option;
+
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -68,7 +74,8 @@ void SystemClock_Config(void);
 int main(void)
 {
   /* USER CODE BEGIN 1 */
-
+//receive();
+//send();
   /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
@@ -78,7 +85,10 @@ int main(void)
 
   /* USER CODE BEGIN Init */
 
-
+  void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
+  {
+    HAL_UART_Receive_IT(&huart2, Rx_data, 4);
+  }
 
 
 
@@ -103,9 +113,15 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+
+	  option = receive();
+	  readPort(option);
+	  //HAL_UART_Transmit(&huart2, "hej5", 4, 100);
+	  //send();
+	  HAL_GPIO_TogglePin(LD2_GPIO_Port, LD2_Pin);
+	  		HAL_Delay(100);
     /* USER CODE END WHILE */
-//receive();
-send();
+
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */

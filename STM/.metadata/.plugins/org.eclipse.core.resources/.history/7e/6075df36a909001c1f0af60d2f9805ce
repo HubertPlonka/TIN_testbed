@@ -1,0 +1,26 @@
+#include <readPort.h>
+#include "gpio.h"
+#include "usart.h"
+#include "stm32f4xx_hal.h"
+
+char * reading;
+
+char * readA(char * port)
+{
+	switch (port)
+	​{
+	    case 'B':
+	      reading[0] = HAL_GPIO_ReadPin(GPIOA, GPIO_Pin_3);
+	      break;
+
+	    case 'C':
+	      // statements
+	      break;
+
+	    case 'D':
+	    	      // statements
+	      break;
+	    case "All":
+	    	      // statements
+	      break;
+};

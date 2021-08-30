@@ -27,7 +27,7 @@
 #include "receive.h"
 #include "send.h"
 #include "gpio.h"
-#include "readA.h"
+#include "readPort.h"
 #include <string.h>
 /* USER CODE END Includes */
 
@@ -51,7 +51,8 @@
 //uint8_t buffer[4] = "hej3";
 uint8_t Rx_data[4];
 uint8_t Tx_data[4];
-char str;
+char * option;
+char * result;
 
 /* USER CODE END PV */
 
@@ -113,9 +114,11 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-	  receive();
+
+	  option = receive();
+	  result = readPort(option);
 	  //HAL_UART_Transmit(&huart2, "hej5", 4, 100);
-	  //send();
+	  send(result);
 	  HAL_GPIO_TogglePin(LD2_GPIO_Port, LD2_Pin);
 	  		HAL_Delay(100);
     /* USER CODE END WHILE */

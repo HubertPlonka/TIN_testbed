@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">&#x0A;<refactoring comment="Rename resource &apos;stmik/Core/Src/readA.c&apos; to &apos;readPort.c&apos;" description="Rename resource &apos;readA.c&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="Core/Src/readA.c" name="readPort.c" stamp="1630336270770" updateReferences="true"/>&#x0A;<refactoring comment="Rename resource &apos;stmik/Core/Inc/readA.h&apos; to &apos;readPort.h&apos;" description="Rename resource &apos;readA.h&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="Core/Inc/readA.h" name="readPort.h" stamp="1630336292878" updateReferences="true"/>
+</session>
