@@ -125,10 +125,10 @@ int main(void)
 	  				}
 	 // option = receive();
 	 // result = readPort(option);
-	  HAL_UART_Transmit(&huart2, *tmp, 1, 200);
+	  HAL_UART_Transmit(&huart2, tmp, 3, 100);
 	  //send(result);
 	 // HAL_GPIO_TogglePin(LD2_GPIO_Port, LD2_Pin);
-	  		HAL_Delay(100);
+	  		//HAL_Delay(1000);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */

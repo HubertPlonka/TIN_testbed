@@ -29,7 +29,6 @@
 #include "gpio.h"
 #include "readPort.h"
 #include <string.h>
-#include <stdlib.h>
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -54,8 +53,7 @@ uint8_t Rx_data[4];
 uint8_t Tx_data[4];
 char * option;
 char * result;
-char  tmp[10];
-int tmp2;
+char * tmp;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -116,19 +114,18 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-	tmp[0] = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_10) ? 1 : 0;
-	  //tmp[0] = tmp2;
+	  tmp[0] = (HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_10) ? 1 : 0);
 	  		if (tmp[0] == 1) {
 	  					HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, GPIO_PIN_SET);
 	  				} else {
 	  					HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, GPIO_PIN_RESET);
 	  				}
-	 // option = receive();
-	 // result = readPort(option);
-	  HAL_UART_Transmit(&huart2, *tmp, 1, 200);
+	  //option = receive();
+	  //result = readPort(option);
+	  //HAL_UART_Transmit(&huart2, "hej5", 4, 100);
 	  //send(result);
-	 // HAL_GPIO_TogglePin(LD2_GPIO_Port, LD2_Pin);
-	  		HAL_Delay(100);
+	  //HAL_GPIO_TogglePin(LD2_GPIO_Port, LD2_Pin);
+	  		//HAL_Delay(100);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */

@@ -54,7 +54,7 @@ uint8_t Rx_data[4];
 uint8_t Tx_data[4];
 char * option;
 char * result;
-char  tmp[10];
+char * tmp;
 int tmp2;
 /* USER CODE END PV */
 
@@ -116,19 +116,19 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-	tmp[0] = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_10) ? 1 : 0;
-	  //tmp[0] = tmp2;
-	  		if (tmp[0] == 1) {
+	 tmp[0] = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_10) ? "1" : "0";
+	//  tmp[0] = tmp2;
+	  		if (tmp[0] == "0") {
 	  					HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, GPIO_PIN_SET);
-	  				} else {
+	  				} else if(tmp[0] == "1"){
 	  					HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, GPIO_PIN_RESET);
 	  				}
-	 // option = receive();
+	  //option = receive();
 	 // result = readPort(option);
-	  HAL_UART_Transmit(&huart2, *tmp, 1, 200);
+	  //HAL_UART_Transmit(&huart2, '1', 1, 100);
 	  //send(result);
-	 // HAL_GPIO_TogglePin(LD2_GPIO_Port, LD2_Pin);
-	  		HAL_Delay(100);
+	  HAL_GPIO_TogglePin(LD2_GPIO_Port, LD2_Pin);
+	  		HAL_Delay(1000);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
