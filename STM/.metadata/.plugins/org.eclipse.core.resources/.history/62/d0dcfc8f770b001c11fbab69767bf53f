@@ -116,7 +116,7 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-	tmp[0] = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_10) ? '1' : '0';
+	tmp[0] = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_10) ? 1 : 0;
 
 	  		if (tmp[0] == 1) {
 	  					HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, GPIO_PIN_SET);
@@ -124,8 +124,8 @@ int main(void)
 	  					HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, GPIO_PIN_RESET);
 	  				}
 
-	  HAL_UART_Transmit(&huart2, tmp, 1, 1000);
-	  memset(tmp, '0', 10);
+	  HAL_UART_Transmit_IT(&huart2, tmp, 2);
+	  memset(tmp, 0, 10);
 	  //option = receive();
 	  	 // result = readPort(option);
 	  //send(result);
